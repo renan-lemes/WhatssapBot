@@ -17,14 +17,17 @@ class WhatssapBot:
         self.driver.get('https://web.whatsapp.com/')
         t.sleep(30)
         for grupo in self.grupos:
-            grupo = self.webdriver.find_element_by_xpath(
+            grupo = self.driver.find_element_by_xpath(
                 f"//span[@title='{ grupo }']")
             t.sleep(3)
             grupo.click()
-            chatbox = self.driver.find_element_by_class_name('_2lMWa')
+            # chatbox = self.driver.find_elements_by_class_name(
+            #    '_2vbn4')
+            # t.sleep(3)
+            # chatbox.click()
             t.sleep(3)
-            chatbox.click()
-            chatbox.send_keys(self.mensagem)
+            grupo.send_keys(self.mensagem)
+            t.sleep(3)
             botao_envio = self.driver.find_element_by_xpath(
                 "//span[@data-icon='send']")
             t.sleep(3)
